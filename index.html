@@ -1,107 +1,265 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Javascript 3</title>
-
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-
-        h1 {
-            font-size: 28px;
-        }
-
-        button {
-            padding: 4px 8px;
-            margin-right: 5px;
-            cursor: pointer;
-        }
-
-        table {
-            border-collapse: collapse;
-            width: 570px;
-            margin-top: 10px;
-        }
-
-        th,
-        td {
-            border: 1px solid #999;
-            padding: 4px 6px;
-        }
-
-        th {
-            text-align: center;
-        }
-
-        td:nth-child(1) {
-            width: 60px;
-            text-align: center;
-        }
-
-        td:nth-child(2) {
-            width: 60px;
-            text-align: center;
-        }
-
-        td:nth-child(3) {
-            width: 370px;
-        }
-
-        td:nth-child(4) {
-            width: 150px;
-        }
-
-        .completed {
-            color: green;
-            font-weight: bold;
-        }
-
-        .not-completed {
-            color: red;
-            font-weight: bold;
-        }
-
-        #todoTable {
-            display: none;
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jade Mark C. Lanticse – Aspiring Junior Web Developer</title>
+  <meta name="description" content="Portfolio of Jade Mark C. Lanticse, a student learning to build web projects using HTML, CSS, and JavaScript.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  
 </head>
-
 <body>
 
-    <h1>Javascript Web Output #3</h1>
+  <a class="skip" href="#main">Skip to content</a>
 
-    <button id="loadBtn">Load data from the API</button>
-    <button id="clearBtn">Clear Table</button>
+  <header class="site-header">
+    <div class="wrap bar">
+      <a class="logo" href="#top">Jade Mark C. Lanticse</a>
+      <nav aria-label="Main">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#journey">Journey</a>
+        <a href="#projects">Projects</a>
+        <a href="#goals">Goals</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-    <p>
-        API:
-        <a href="https://jsonplaceholder.typicode.com/todos/" target="_blank">
-            https://jsonplaceholder.typicode.com/todos/
-        </a>
-    </p>
+  <main id="main">
 
-    <table id="todoTable">
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div class="wrap hero-grid">
+        <div>
+          <h1>Hi, I’m Jade Mark C. Lanticse. I’m learning to build useful web applications.</h1>
+          <p class="lead">I’m a [your year and course, e.g. second-year Information Technology] student at [your school]. I’m teaching myself web development with HTML, CSS, and JavaScript, one small project at a time, and I’m looking for a place to keep learning on real work.</p>
+          <div class="actions">
+            <a class="btn primary" href="#projects">View my projects</a>
+            <a class="btn" href="#contact">Contact me</a>
+          </div>
+        </div>
+        <aside class="status" aria-label="Current status">
+          <h2>Right now</h2>
+          <dl>
+        
+            <dt>Learning</dt>
+            <dd>React.js and MySQL</dd>
+            <dt>Looking for</dt>
+            <dd>Internships, junior roles, and mentorship</dd>
+            
+          </dl>
+        </aside>
+      </div>
+    </section>
 
-        <thead>
-            <tr>
-                <th>User ID</th>
-                <th>Task ID</th>
-                <th>Title</th>
-                <th>Status</th>
-            </tr>
-        </thead>
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="wrap two-col">
+        <h2>About me</h2>
+        <div class="prose">
+          <p>My name is Jade Mark C. Lanticse, and I am an aspiring Web Developer and Junior AI Developer with a strong interest in technology, programming, and software development. I enjoy learning new technologies and creating websites and applications that are useful, interactive, and user-friendly.</p>
+          <p>I have knowledge of HTML, CSS, and JavaScript for building and designing websites. I also work with MySQL for database management, React JS for developing interactive user interfaces, and GitHub for managing code and collaborating on software projects.</p>
+        </div>
+      </div>
+    </section>
 
-        <tbody id="tableBody">
-        </tbody>
+    <!-- SKILLS -->
+    <section id="skills" class="tint">
+      <div class="wrap">
+        <h2>Skills</h2>
+        <p class="section-intro">Grouped by how confident I am, so you know what to expect.</p>
+        <div class="skill-groups">
+          <div class="skill-card">
+            <h3>Comfortable with</h3>
+            <p class="note">I use these regularly in my projects.</p>
+            <ul class="chips">
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>JavaScript</li>
+              <li>Git and GitHub</li>
+              <li>VS Code</li>
+              <li>MySQL</li>
 
-    </table>
+            </ul>
+          </div>
+          <div class="skill-card">
+            <h3>Currently learning</h3>
+            <p class="note">I’ve used these in tutorials or small projects.</p>
+            <ul class="chips">
+              <li>React.js</li>
+              <li>MySQL</li>
+              <li>Responsive design</li>
+            </ul>
+          </div>
+          <div class="skill-card">
+            <h3>Want to explore next</h3>
+            <p class="note">On my list, not yet part of my skill set.</p>
+            <ul class="chips">
+              <li>Node.js</li>
+              <li>REST APIs</li>
+              <li>TypeScript</li>
+              <li>Testing</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <script src="script.js"></script>
+    <!-- JOURNEY -->
+    <section id="journey">
+      <div class="wrap two-col">
+        <h2>Learning journey</h2>
+        <ol class="timeline">
+          <li>
+            <span class="when">[October, 2021]</span>
+            <h3>Started learning web development</h3>
+            <p>I started learning web development by studying HTML, CSS, and JavaScript to understand how websites are created and designed. Through hands-on practice , I learned how to build web pages, style layouts, add interactive features, and create responsive designs. I also began exploring React JS, MySQL, and GitHub to expand my knowledge of modern web development and database management. This learning journey has strengthened my interest in programming and inspired me to continue improving my skills as a Web Developer and aspiring AI Developer.
+</p>
+          </li>
+          <li>
+            <span class="when">[January, 2022]</span>
+            <h3>Added interactivity with JavaScript</h3>
+            <p>I expanded my web development skills by learning JavaScript to make websites more interactive and functional. I practiced using variables, functions, conditional statements, loops, and event listeners to handle user actions such as button clicks and form submissions. I also explored creating simple interactive applications, performing calculations, and dynamically updating webpage content. Through these experiences, I developed a better understanding of how JavaScript works with HTML and CSS to create engaging and user-friendly websites.</p>
+          </li>
+          <li>
+            <span class="when">[March, 2022]</span>
+            <h3>Learned databases with MySQL</h3>
+            <p>I started learning database management using MySQL to understand how data is stored, organized, and managed in a database. I practiced creating databases and tables, inserting records, retrieving information, updating data, and deleting records using SQL queries. I also explored how databases can be connected to web applications to manage information efficiently. Through hands-on practice and school projects, I improved my understanding of database management and learned the importance of organizing data accurately and securely.</p>
+          </li>
+          <li>
+            <span class="when">[May, 2024]</span>
+            <h3>Exploring React.js</h3>
+            <p>I started exploring React.js to learn how to build modern, interactive, and dynamic user interfaces. I learned about the basics of React components and how they help organize code into reusable parts. I also explored JSX, props, and state to understand how data is displayed and updated on a webpage. Through practice and small projects, I gained a better understanding of how React.js works with JavaScript to create user-friendly web applications. I am continuing to develop my skills and expand my knowledge of modern front-end development.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="tint">
+      <div class="wrap">
+        <h2>Projects</h2>
+        <p class="section-intro">These are learning projects. Each one shows what I built, what went wrong, and what I took from it.</p>
+
+        <div class="projects">
+
+          <article class="project">
+            <div class="project-head">
+              <h3>[Project name, e.g. To-do list app]</h3>
+              <span class="badge done">Completed</span>
+            </div>
+            <p>[One or two sentences on what it does, e.g. Lets you add, complete, and delete tasks, and works on both phones and computers.]</p>
+            <ul class="chips small">
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>JavaScript</li>
+            </ul>
+            <dl class="details">
+              <dt>What I learned</dt>
+              <dd>[e.g. How to update the page when the user clicks, and how to keep a layout working on small screens.]</dd>
+              <dt>What I’d improve</dt>
+              <dd>[e.g. Save tasks so they are still there after refreshing the page.]</dd>
+            </dl>
+            <p class="links"><a href="https://github.com/YOUR-USERNAME/PROJECT-1">View code on GitHub</a></p>
+          </article>
+
+          <article class="project">
+            <div class="project-head">
+              <h3>[Project name, e.g. Student records system]</h3>
+              <span class="badge done">Completed</span>
+            </div>
+            <p>[e.g. A small app that stores student names and grades in a MySQL database and shows them in a table.]</p>
+            <ul class="chips small">
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>JavaScript</li>
+              <li>MySQL</li>
+            </ul>
+            <dl class="details">
+              <dt>What I learned</dt>
+              <dd>[e.g. How to design tables and write queries to add, read, update, and delete records.]</dd>
+              <dt>What I’d improve</dt>
+              <dd>[e.g. Add input checks and a search box.]</dd>
+            </dl>
+            <p class="links"><a href="https://github.com/YOUR-USERNAME/PROJECT-2">View code on GitHub</a></p>
+          </article>
+
+          <article class="project">
+            <div class="project-head">
+              <h3>[Project name, e.g. Weather app]</h3>
+              <span class="badge wip">In progress</span>
+            </div>
+            <p>[e.g. Following a tutorial to build a React app that shows the weather for a city, then changing the design to make it my own.]</p>
+            <ul class="chips small">
+              <li>React.js</li>
+              <li>CSS</li>
+            </ul>
+            <dl class="details">
+              <dt>What I’m learning</dt>
+              <dd>[e.g. How components, props, and state fit together.]</dd>
+              <dt>Next step</dt>
+              <dd>[e.g. Add error messages for cities that can’t be found.]</dd>
+            </dl>
+            <p class="links"><a href="https://github.com/YOUR-USERNAME/PROJECT-3">View code on GitHub</a></p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- GOALS -->
+    <section id="goals">
+      <div class="wrap two-col">
+        <h2>Career goals</h2>
+        <div class="goals">
+          <div>
+            <h3>Next 6 to 12 months</h3>
+            <ul>
+              <li>Continue building and publishing projects with clear write-ups.</li>
+              <li>Build and publish two more projects with clear write-ups.</li>
+              <li>Learn Node.js and build a small app that connects React to a database.</li>
+              <li>Find an internship or junior role where I can learn from experienced developers.</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Longer term</h3>
+            <ul>
+              <li>Work as a junior web developer.</li>
+              <li>Get better at building full applications, from the screen to the database.</li>
+              <li>I want to create websites and applications for students and local businesses, using web development and AI to solve problems and make everyday tasks easier.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact">
+      <div class="wrap">
+        <h2>Contact</h2>
+        <p class="section-intro">I’d love to hear about internships, junior roles, study groups, or advice. I usually reply within a few days.</p>
+        <ul class="contact-list">
+          <li><a class="btn primary" href="mailto:jmlanticse679@gmail.com">jmlanticse679@gmail.com</a></li>
+          <li><a class="btn" href="https://github.com/lantics0">GitHub</a></li>
+          
+        </ul>
+        <!-- Optional: add your resume file to the folder and uncomment the line below
+        <p><a href="resume.pdf">Download my resume (PDF)</a></p>
+        -->
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>© 2026 Jade Mark C. Lanticse. Built with plain HTML and CSS.</p>
+    </div>
+  </footer>
 
 </body>
 </html>
