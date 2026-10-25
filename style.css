@@ -706,4 +706,40 @@ section:not(.hero) h2::after {
   border-radius: 4px;
 }
 
+html { scroll-behavior: smooth; }
+
+#themeBtn, .filters button {
+  cursor: pointer;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid #888;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+}
+
+.filters { display: flex; gap: 8px; margin-bottom: 24px; }
+
+#toTop {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  background: #111;
+  color: #fff;
+  display: none;          /* hidden until you scroll down */
+}
+
+/* Dark mode */
+body.dark { background: #14161a; color: #e8e8e8; }
+body.dark .tint,
+body.dark .site-header,
+body.dark .skill-card,
+body.dark .project,
+body.dark .status { background: #1e2127; color: #e8e8e8; }
+
 /* One entrance on page load: the hero

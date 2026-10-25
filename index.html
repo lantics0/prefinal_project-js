@@ -149,10 +149,10 @@
 
           <article class="project">
             <div class="project-head">
-              <h3>[Project name, e.g. To-do list app]</h3>
+              <h3>Personal Portfolio Website</h3>
               <span class="badge done">Completed</span>
             </div>
-            <p>[One or two sentences on what it does, e.g. Lets you add, complete, and delete tasks, and works on both phones and computers.]</p>
+            <p>Created a personal portfolio website using HTML, CSS, and JavaScript. It showcases my personal information, skills, hobbies, and projects in a simple, organized, and responsive design.</p>
             <ul class="chips small">
               <li>HTML</li>
               <li>CSS</li>
@@ -160,19 +160,19 @@
             </ul>
             <dl class="details">
               <dt>What I learned</dt>
-              <dd>[e.g. How to update the page when the user clicks, and how to keep a layout working on small screens.]</dd>
+              <dd>I learned how to structure a website using HTML, style it with CSS, and add interactive features using JavaScript. I also improved my understanding of website layouts and responsive design.</dd>
               <dt>What I’d improve</dt>
-              <dd>[e.g. Save tasks so they are still there after refreshing the page.]</dd>
+              <dd>I would improve the website's design, add more interactive features, and make it more attractive and user-friendly on mobile devices.</dd>
             </dl>
-            <p class="links"><a href="https://github.com/YOUR-USERNAME/PROJECT-1">View code on GitHub</a></p>
+            <p class="links"><a href="https://github.com/lantics0/JS-ADVANCED">View code on GitHub</a></p>
           </article>
 
           <article class="project">
             <div class="project-head">
-              <h3>[Project name, e.g. Student records system]</h3>
+              <h3>Student Records Management System</h3>
               <span class="badge done">Completed</span>
             </div>
-            <p>[e.g. A small app that stores student names and grades in a MySQL database and shows them in a table.]</p>
+            <p>Developed a simple student records management system that stores student names and grades in a MySQL database. The system allows users to manage student information through an organized and user-friendly interface.</p>
             <ul class="chips small">
               <li>HTML</li>
               <li>CSS</li>
@@ -181,28 +181,28 @@
             </ul>
             <dl class="details">
               <dt>What I learned</dt>
-              <dd>[e.g. How to design tables and write queries to add, read, update, and delete records.]</dd>
+              <dd>I learned how to create and manage database tables, write SQL queries, and perform CRUD operations (Create, Read, Update, and Delete) to manage student records.</dd>
               <dt>What I’d improve</dt>
-              <dd>[e.g. Add input checks and a search box.]</dd>
+              <dd>I would add a search feature, input validation, and a login system to improve security and make the application easier to use.</dd>
             </dl>
             <p class="links"><a href="https://github.com/YOUR-USERNAME/PROJECT-2">View code on GitHub</a></p>
           </article>
 
           <article class="project">
             <div class="project-head">
-              <h3>[Project name, e.g. Weather app]</h3>
+              <h3> Weather app</h3>
               <span class="badge wip">In progress</span>
             </div>
-            <p>[e.g. Following a tutorial to build a React app that shows the weather for a city, then changing the design to make it my own.]</p>
+            <p>Developing a weather application using React.js while learning how to identify and fix coding errors. The project focuses on creating an interactive interface and improving the functionality of the application.</p>
             <ul class="chips small">
               <li>React.js</li>
-              <li>CSS</li>
+              <li>Debugging Errors</li>
             </ul>
             <dl class="details">
               <dt>What I’m learning</dt>
-              <dd>[e.g. How components, props, and state fit together.]</dd>
+              <dd>I am learning how to create React components, manage state and props, identify coding errors, and troubleshoot problems to make my application work correctly.</dd>
               <dt>Next step</dt>
-              <dd>[e.g. Add error messages for cities that can’t be found.]</dd>
+              <dd>Improve the application's functionality, fix remaining errors, and display weather information for different cities with helpful error messages when something goes wrong.</dd>
             </dl>
             <p class="links"><a href="https://github.com/YOUR-USERNAME/PROJECT-3">View code on GitHub</a></p>
           </article>
@@ -255,11 +255,198 @@
 
   </main>
 
+  <script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  /* ---------- Inject small styles for the new features ---------- */
+  const style = document.createElement('style');
+  style.textContent = `
+    html { scroll-behavior: smooth; }
+    nav a.active { font-weight: 700; text-decoration: underline; text-underline-offset: 6px; }
+
+    .tool-btn {
+      cursor: pointer; border: 1px solid currentColor; background: transparent;
+      color: inherit; border-radius: 999px; padding: 6px 14px; font: inherit; font-size: .9rem;
+    }
+    .tool-btn:hover { opacity: .7; }
+
+    .filters { display: flex; gap: 8px; flex-wrap: wrap; margin: 0 0 24px; }
+    .filters .tool-btn[aria-pressed="true"] { background: #111; color: #fff; border-color: #111; }
+
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    #toTop {
+      position: fixed; right: 20px; bottom: 20px; width: 44px; height: 44px;
+      border-radius: 50%; border: none; cursor: pointer; font-size: 1.2rem;
+      background: #111; color: #fff; box-shadow: 0 4px 12px rgba(0,0,0,.25);
+      opacity: 0; pointer-events: none; transition: opacity .3s;
+    }
+    #toTop.show { opacity: 1; pointer-events: auto; }
+
+    #toast {
+      position: fixed; left: 50%; bottom: 30px; transform: translateX(-50%) translateY(20px);
+      background: #111; color: #fff; padding: 10px 18px; border-radius: 8px;
+      opacity: 0; transition: all .3s; pointer-events: none; z-index: 999;
+    }
+    #toast.show { opacity: 1; transform: translateX(-50%); }
+
+    /* Dark mode */
+    html.dark body, html.dark .tint, html.dark .site-header { background: #14161a !important; color: #e8e8e8 !important; }
+    html.dark .skill-card, html.dark .project, html.dark .status { background: #1e2127 !important; color: #e8e8e8 !important; border-color: #333 !important; }
+    html.dark a:not(.btn):not(.primary) { color: #8ab4ff; }
+    html.dark .chips li { background: #2a2e36 !important; color: #e8e8e8 !important; }
+    html.dark .filters .tool-btn[aria-pressed="true"] { background: #e8e8e8; color: #111; border-color: #e8e8e8; }
+  `;
+  document.head.appendChild(style);
+
+  /* ---------- 1. Dark / light mode (remembered) ---------- */
+  const root = document.documentElement;
+  const bar = document.querySelector('.site-header .bar');
+  const themeBtn = document.createElement('button');
+  themeBtn.className = 'tool-btn';
+  themeBtn.setAttribute('aria-label', 'Toggle dark mode');
+
+  const saved = (() => { try { return localStorage.getItem('theme'); } catch { return null; } })();
+  if (saved === 'dark') root.classList.add('dark');
+
+  const updateThemeLabel = () => {
+    themeBtn.textContent = root.classList.contains('dark') ? '☀ Light' : '🌙 Dark';
+  };
+  updateThemeLabel();
+
+  themeBtn.addEventListener('click', () => {
+    root.classList.toggle('dark');
+    try { localStorage.setItem('theme', root.classList.contains('dark') ? 'dark' : 'light'); } catch {}
+    updateThemeLabel();
+  });
+  if (bar) bar.appendChild(themeBtn);
+
+  /* ---------- 2. Smooth scroll + active nav link ---------- */
+  const navLinks = document.querySelectorAll('nav a[href^="#"]');
+  navLinks.forEach(link => {
+    link.addEventListener('click', e => {
+      const target = document.querySelector(link.getAttribute('href'));
+      if (!target) return;
+      e.preventDefault();
+      const offset = (document.querySelector('.site-header')?.offsetHeight || 0) + 8;
+      const y = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    });
+  });
+
+  const sections = [...navLinks]
+    .map(l => document.querySelector(l.getAttribute('href')))
+    .filter(Boolean);
+
+  const setActive = () => {
+    const pos = window.scrollY + 120;
+    let current = null;
+    sections.forEach(sec => { if (sec.offsetTop <= pos) current = sec.id; });
+    navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + current));
+  };
+
+  /* ---------- 3. Back-to-top button ---------- */
+  const toTop = document.createElement('button');
+  toTop.id = 'toTop';
+  toTop.setAttribute('aria-label', 'Back to top');
+  toTop.textContent = '↑';
+  toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  document.body.appendChild(toTop);
+
+  window.addEventListener('scroll', () => {
+    toTop.classList.toggle('show', window.scrollY > 400);
+    setActive();
+  }, { passive: true });
+  setActive();
+
+  /* ---------- 4. Project filter ---------- */
+  const projectsWrap = document.querySelector('.projects');
+  if (projectsWrap) {
+    const cards = [...projectsWrap.querySelectorAll('.project')];
+    const filterBar = document.createElement('div');
+    filterBar.className = 'filters';
+    filterBar.setAttribute('role', 'group');
+    filterBar.setAttribute('aria-label', 'Filter projects');
+
+    const options = [
+      { label: 'All', value: 'all' },
+      { label: 'Completed', value: 'done' },
+      { label: 'In progress', value: 'wip' }
+    ];
+
+    options.forEach((opt, i) => {
+      const b = document.createElement('button');
+      b.className = 'tool-btn';
+      b.textContent = opt.label;
+      b.setAttribute('aria-pressed', i === 0 ? 'true' : 'false');
+      b.addEventListener('click', () => {
+        filterBar.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', 'false'));
+        b.setAttribute('aria-pressed', 'true');
+        cards.forEach(card => {
+          const badge = card.querySelector('.badge');
+          const show = opt.value === 'all' || (badge && badge.classList.contains(opt.value));
+          card.style.display = show ? '' : 'none';
+        });
+      });
+      filterBar.appendChild(b);
+    });
+
+    projectsWrap.parentNode.insertBefore(filterBar, projectsWrap);
+  }
+
+  /* ---------- 5. Fade-in on scroll ---------- */
+  const revealEls = document.querySelectorAll('main section .wrap > *, .timeline li, .project, .skill-card');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    revealEls.forEach(el => { el.classList.add('reveal'); io.observe(el); });
+  }
+
+  /* ---------- 6. Click email to copy ---------- */
+  const toast = document.createElement('div');
+  toast.id = 'toast';
+  document.body.appendChild(toast);
+  let toastTimer;
+  const showToast = msg => {
+    toast.textContent = msg;
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.remove('show'), 2000);
+  };
+
+  const emailLink = document.querySelector('a[href^="mailto:"]');
+  if (emailLink) {
+    emailLink.title = 'Click to copy my email';
+    emailLink.addEventListener('click', async e => {
+      e.preventDefault();
+      const email = emailLink.getAttribute('href').replace('mailto:', '');
+      try {
+        await navigator.clipboard.writeText(email);
+        showToast('Email copied!');
+      } catch {
+        window.location.href = emailLink.getAttribute('href'); // fallback: open mail app
+      }
+    });
+  }
+
+});
+</script>
+
   <footer class="site-footer">
     <div class="wrap">
       <p>© 2026 Jade Mark C. Lanticse. Built with plain HTML and CSS.</p>
     </div>
   </footer>
+
+  <button id="toTop">↑</button>
+<script src="script.js"></script>
 
 </body>
 </html>
